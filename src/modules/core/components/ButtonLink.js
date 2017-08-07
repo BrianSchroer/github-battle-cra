@@ -20,8 +20,7 @@ function ButtonLink(props) {
 }
 
 ButtonLink.propTypes = {
-  to: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  to: PropTypes.any.isRequired
 };
 
 export default ButtonLink;

@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
-    "glamor": "^2.20.37",
-    "glamorous": "^3.25.0",
+    "glamor": "^2.20.39",
+    "glamorous": "^4.1.0",
     "query-string": "^5.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
