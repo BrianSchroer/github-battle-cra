@@ -1,7 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
 import PlayerPreview from './PlayerPreview';
-import {Number, ExternalLink} from '../../core';
+import {Number, Link} from '../../core';
+
+const PlayerProperties = glamorous.ul({
+  padding: 0,
+  ' li': {
+    listStyleType: 'none' 
+  }
+});
 
 function Profile({info, stars}) {
   return (
@@ -10,7 +18,7 @@ function Profile({info, stars}) {
       userName={info.login}
       url={info.html_url}
     >
-      <ul className="space-list-items">
+      <PlayerProperties>
         {info.name && <li>{info.name}</li>}
         {info.location && <li>{info.location}</li>}
         {info.company && <li>{info.company}</li>}
@@ -18,8 +26,8 @@ function Profile({info, stars}) {
         <li>Followers: <Number value={info.followers}/></li>
         <li>Following: <Number value={info.following}/></li>
         <li>Public Repos: <Number value={info.public_repos}/></li>
-        {info.blog && <li><ExternalLink href={info.blog} /></li>}
-      </ul>
+        {info.blog && <li><Link href={info.blog} /></li>}
+      </PlayerProperties>
     </PlayerPreview>
   );
 }

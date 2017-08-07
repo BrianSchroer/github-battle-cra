@@ -1,9 +1,15 @@
-import ExternalLink from './components/ExternalLink';
+import Button from './components/Button';
+import ButtonLink from './components/ButtonLink';
+import Link from './components/Link';
 import Loading from './components/Loading';
+import StyledNavLink from './components/StyledNavLink';
 import Number from './components/Number';
 
 export {
-  ExternalLink,
+  Button,
+  ButtonLink,
+  Link,
   Loading,
+  StyledNavLink,
   Number
 };

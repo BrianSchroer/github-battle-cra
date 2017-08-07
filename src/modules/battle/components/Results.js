@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
 import {Link} from 'react-router-dom';
 import queryString from 'query-string';
 import githubApi from '../../../api/githubApi';
 import Player from './Player';
 import {Loading} from '../../core';
+
+const Row = glamorous.div({
+    display: 'flex',
+    justifyContent: 'space-around'
+});
 
 class Results extends React.Component {
 
@@ -61,7 +67,7 @@ class Results extends React.Component {
     }
 
     return (
-      <div className="row">
+      <Row>
         
         <Player
           label="Winner"
@@ -77,7 +83,7 @@ class Results extends React.Component {
           profile={loser.profile}
         />
 
-      </div>
+      </Row>
     );
   }
 }

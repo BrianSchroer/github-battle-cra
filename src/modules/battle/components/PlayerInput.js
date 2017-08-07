@@ -1,5 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
+import {Button} from '../../core';
+
+const Form = glamorous.form({
+  display: 'flex',
+  flexDirection: 'column',
+  width: '500px',
+  alignItems: 'center'
+});
+
+const Label = glamorous.label({
+  textAlign: 'center',
+  fontSize: '30px',
+  fontWeight: '200',
+});
+
+const UserNameInput = glamorous.input({
+    borderRadius: '3px',
+    margin: '10px 0',
+    padding: '5px',
+    border: '1px solid rgba(0, 0, 0, 0.43)',
+    fontSize: '16px',
+    width: '80%'     
+});
 
 class PlayerInput extends React.Component {
   constructor(props) {
@@ -29,19 +53,17 @@ class PlayerInput extends React.Component {
     const {userName} = this.state;
 
     return (
-      <form 
-        className="column"
+      <Form
         onSubmit={this.handleSubmit}
       >
         
-        <label 
-          className="header" 
+        <Label 
           htmlFor="userName"
         >
           {label}
-        </label>
+        </Label>
         
-        <input 
+        <UserNameInput
           type="text"
           id="userName" 
           placeholder="github user name"
@@ -50,14 +72,13 @@ class PlayerInput extends React.Component {
           onChange={this.handleChange}
         />
 
-        <button
-          className="button"
+        <Button
           type="submit"
           disabled={!userName}
         >
           Submit
-        </button>
-      </form>
+        </Button>
+      </Form>
     );
   }
 }

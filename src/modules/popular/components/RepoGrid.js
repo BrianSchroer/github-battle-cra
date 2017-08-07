@@ -1,40 +1,73 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Number, ExternalLink} from '../../core';
+import glamorous from 'glamorous';
+import {Number, Link} from '../../core';
+
+const PopularList = glamorous.ul({
+  padding: 0,
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'space-around',
+  ' li': {
+    listStyleType: 'none' 
+  }
+});
+
+const PopularItem = glamorous.li({
+  margin: '20px',
+  width: '200px'
+});
+
+const PopularItemProperties = glamorous.ul({
+  padding: 0,
+  marginBottom: 10,
+});
+
+const Rank = glamorous.div({
+  fontSize: '20px',
+  margin: '10px',
+});
+
+const RepoImage = glamorous.img({
+  width: 150
+});
+
+const Description = glamorous.li({
+  fontSize: 12
+});
 
 function RepoGrid({repos}) {
-    return(
+  return(
       repos &&
-      <ul className="popular-list">
+      <PopularList>
         {
           repos.map((repo, index) =>
           (
-              <li key={repo.name} className="popular-item">
-                <div className="popular-rank">#{index + 1}</div>
-                <ul className="space-list-items">
+              <PopularItem key={repo.name}>
+                <Rank>#{index + 1}</Rank>
+                <PopularItemProperties>
                     <li>
-                      <img
-                        className="repo-avatar"
+                      <RepoImage
                         src={repo.owner.avatar_url}
                         alt={`Avatar for ${repo.owner.login}`} />
                     </li>
                     <li>
-                      <ExternalLink href={repo.html_url} className="repo-name">{repo.name}</ExternalLink>
+                      <Link href={repo.html_url} style={{fontWeight: 'bold'}}>{repo.name}</Link>
                     </li>
                     <li>
-                      <ExternalLink href={repo.owner.html_url}>@{repo.owner.login}</ExternalLink>
+                      <Link href={repo.owner.html_url}>@{repo.owner.login}</Link>
                     </li>
                     <li>
                       <Number value={repo.stargazers_count}/> stars
                     </li>
-                    <li className="popular-description">
+                    <Description>
                       {repo.description}
-                    </li>
-                </ul>
-              </li>
+                    </Description>
+                </PopularItemProperties>
+              </PopularItem>
           ))
         }
-      </ul>
+      </PopularList>
     ); 
 }
 

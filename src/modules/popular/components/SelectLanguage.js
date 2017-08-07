@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
 import LanguageItem from './LanguageItem';
+
+const Ul = glamorous.ul({
+  display: 'flex',
+  justifyContent: 'center',
+  padding: 0
+});
 
 function SelectLanguage({selectedLanguage, onSelect}) {
     const languages = ['All', 'C', 'C++', 'C#', 'CSS', 'Java', 'JavaScript', 'Objective-C', 'PHP', 'Python', 'Ruby'];  
 
     return(
-      <ul className="languages">
+      <Ul>
         {languages.map(language =>
           <LanguageItem 
             key={language} 
@@ -14,7 +21,7 @@ function SelectLanguage({selectedLanguage, onSelect}) {
             isSelected={language === selectedLanguage}
             onSelect={onSelect} />
         )}
-      </ul>
+      </Ul>
     ); 
 }
 

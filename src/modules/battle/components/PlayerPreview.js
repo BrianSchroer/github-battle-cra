@@ -1,24 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ExternalLink} from '../../core';
+import glamorous from 'glamorous';
+import {Link} from '../../core';
 
+const UserAvatar = glamorous.img({
+  width: '150px',
+  borderRadius: '50%'
+});
+
+const Column = glamorous.div({
+  display: 'flex',
+  flexDirection: 'column',
+  width: '500px',
+  alignItems: 'center',
+});
+ 
 function PlayerPreview({avatar, userName, url, children}) {
-  return (
+ return (
     <div>
-        <div className="column">
+        <Column>
           
-          <img
+          <UserAvatar
             className="user-avatar"
             src={avatar}
             alt={`Avatar for ${userName}`}
           />
           
           {(url)
-            ? <h2 className="username"><ExternalLink href={url}>@{userName}</ExternalLink></h2>
-            : <h2 className="username">@{userName}</h2>
+            ? <h2><Link href={url}>@{userName}</Link></h2>
+            : <h2>@{userName}</h2>
           }
         
-        </div>
+        </Column>
         {children}
     </div>
   );

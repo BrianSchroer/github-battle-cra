@@ -1,15 +1,22 @@
 import React from 'react';
+import glamorous from 'glamorous';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Nav from './Nav';
 import {Home} from '../../modules/home';
 import {Battle, Results} from '../../modules/battle';
 import {Popular} from '../../modules/popular';
 
+const Div = glamorous.div({
+    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    maxWidth: '1200px',
+    margin: '0 auto'
+});
+
 export default class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
-                <div className="container">
+                <Div>
                     <Nav />
                     <Switch>
                         <Route exact path="/" component={Home} />
@@ -20,7 +27,7 @@ export default class App extends React.Component {
                             return <h1>Page Not Found</h1>; 
                         }} />
                     </Switch>
-                </div>
+                </Div>
             </BrowserRouter>
         );
     }

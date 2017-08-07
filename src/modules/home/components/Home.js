@@ -1,13 +1,21 @@
 import React from 'react';
+import glamorous from 'glamorous';
+import {ButtonLink} from '../../core';
 import {Link} from 'react-router-dom';
+
+const Div = glamorous.div({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center'
+});
 
 export default class Home extends React.Component {
   render() {
     return (
-      <div className="home-container">
+      <Div>
         <h1>Github Battle: Battle your friends</h1>
-        <Link className="button" to="/battle">Battle</Link> 
-      </div>
+        <ButtonLink to="/battle">Battle</ButtonLink> 
+      </Div>
     );
   }
 }

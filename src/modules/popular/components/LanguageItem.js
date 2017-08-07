@@ -1,14 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
+
+const Li = glamorous.li({
+  margin: '10px',
+  fontWeight: 'bold',
+  cursor: 'pointer',
+  listStyleType: 'none',
+  color: (props) =>  (props.isSelected) ? {color: '#d0021b'} : null 
+});
 
 function LanguageItem({language, onSelect, isSelected}) {
+
   return(
-    <li
+    <Li
       onClick={onSelect.bind(null, language)}
       style={(isSelected) ? {color: '#d0021b'} : null}
     >
       {language}
-    </li>
+    </Li>
   );
 }
 

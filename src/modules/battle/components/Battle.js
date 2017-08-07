@@ -1,7 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import glamorous from 'glamorous';
+import {Button, ButtonLink} from '../../core';
 import PlayerInput from './PlayerInput';
 import PlayerPreview from './PlayerPreview';
+
+const Row = glamorous.div({
+    display: 'flex',
+    justifyContent: 'space-around'
+});
 
 class Battle extends React.Component {
     constructor(props) {
@@ -46,7 +52,7 @@ class Battle extends React.Component {
 
         return (
             <div>
-                <div className="row">
+                <Row>
 
                     {(playerOneDefined) 
                         ? <PlayerPreview
@@ -54,12 +60,11 @@ class Battle extends React.Component {
                             userName={playerOneName}
                             onReset={this.handleReset} 
                           >
-                            <button 
-                                className="reset-button"
+                            <Button
                                 onClick={this.handleReset.bind(null, 'playerOne')}
                             >
                                 Reset
-                            </button>
+                            </Button>
                           </PlayerPreview> 
 
                         : <PlayerInput
@@ -75,12 +80,11 @@ class Battle extends React.Component {
                             userName={playerTwoName} 
                             onReset={this.handleReset}
                           >
-                            <button 
-                                className="reset-button"
+                            <Button 
                                 onClick={this.handleReset.bind(null, 'playerTwo')}
                             >
                                 Reset
-                            </button>
+                            </Button>
                           </PlayerPreview> 
 
                         : <PlayerInput
@@ -89,18 +93,18 @@ class Battle extends React.Component {
                             onSubmit={this.handleSubmit}
                             /> 
                     }
-                </div>
+                    
+                </Row>
 
                 {playerOneDefined && playerTwoDefined && 
-                    <Link
-                        className="button"
+                    <ButtonLink
                         to={{
                             pathname: `${match.url}/results`,
                             search: `?playerOneName=${playerOneName}&playerTwoName=${playerTwoName}`
                         }}
                     >
                         Battle
-                    </Link>
+                    </ButtonLink>
                 }
 
             </div>
