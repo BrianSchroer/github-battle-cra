@@ -2,7 +2,7 @@ import React from 'react';
 import glamorous from 'glamorous';
 import {StyledNavLink} from '../../modules/core';
 
-const Ul = glamorous.ul({
+const NavLinkList = glamorous.ul({
   padding: 0,
   display: 'flex',
   ' li': {
@@ -11,15 +11,15 @@ const Ul = glamorous.ul({
   },
   ' a.active': {
     fontWeight: 'bold'
-  }
+  } 
 });
 
 export default function Nav() {
   return(
-    <Ul>
+    <NavLinkList>
       <li><StyledNavLink exact to="/">Home</StyledNavLink></li>
       <li><StyledNavLink to="/battle">Battle</StyledNavLink></li>
       <li><StyledNavLink to="/popular">Popular</StyledNavLink></li>
-    </Ul>
+    </NavLinkList>
   );
 }

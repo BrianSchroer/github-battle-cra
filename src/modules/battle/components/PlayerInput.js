@@ -25,21 +25,24 @@ const UserNameInput = glamorous.input({
     width: '80%'     
 });
 
-class PlayerInput extends React.Component {
-  constructor(props) {
-    super(props);
+export default class PlayerInput extends React.Component {
+  
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    onSubmit: PropTypes.func.isRequired
+  };
 
-    this.state = {userName: ''};
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  state = {
+    userName: ''
+  };
 
-  handleChange(event) {
+  handleChange = (event) => {
     const userName = event.target.value;
     this.setState(() => ({userName}));
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     const {onSubmit, id} = this.props;
     const {userName} = this.state;
 
@@ -82,11 +85,3 @@ class PlayerInput extends React.Component {
     );
   }
 }
-
-PlayerInput.propTypes = {
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired
-};
-
-export default PlayerInput;

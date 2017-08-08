@@ -1,6 +1,7 @@
 {
   "extends": [
     "eslint:recommended",
+    "plugin:react-app/recommended",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],

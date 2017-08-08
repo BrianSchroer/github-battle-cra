@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Header}  from 'glamorous';
+import glamorous from 'glamorous';
 import Profile from './Profile';
 import {Number} from '../../core';
+
+const Header = glamorous.header({
+  textAlign: 'center',
+  fontSize: '30px',
+  fontWeight: '200' 
+})
 
 function Player({label, score, stars, profile}) {
   return (
     <div>
-      <Header css={{
-        textAlign: 'center',
-        fontSize: '30px',
-        fontWeight: '200'
-      }}
-      >
+      <Header>
         {label}
       </Header>
       <h3 style={{textAlign: 'center'}}>Score: <Number value={score}/></h3>

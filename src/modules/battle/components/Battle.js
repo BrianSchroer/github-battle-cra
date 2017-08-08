@@ -4,31 +4,24 @@ import {Button, ButtonLink} from '../../core';
 import PlayerInput from './PlayerInput';
 import PlayerPreview from './PlayerPreview';
 
-const Row = glamorous.div({
+const PlayersDiv = glamorous.div({
     display: 'flex',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around' 
 });
 
-class Battle extends React.Component {
-    constructor(props) {
-        super(props);
+export default class Battle extends React.Component {
+    state = {
+        playerOneImage: null, 
+        playerOneName: '',
+        playerTwoImage: null, 
+        playerTwoName: ''
+    };
 
-        this.state = {
-            playerOneImage: null, 
-            playerOneName: '',
-            playerTwoImage: null, 
-            playerTwoName: ''
-        };
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleReset = this.handleReset.bind(this);
-    }
-
-    handleSubmit(id, userName) {
+    handleSubmit = (id, userName) => {
         this.setState(() =>  this.userStateUpdate(id, userName));
     }
 
-    handleReset(id) {
+    handleReset = (id) => {
         this.setState(() => this.userStateUpdate(id, '')); 
     }
 
@@ -52,7 +45,7 @@ class Battle extends React.Component {
 
         return (
             <div>
-                <Row>
+                <PlayersDiv>
 
                     {(playerOneDefined) 
                         ? <PlayerPreview
@@ -94,7 +87,7 @@ class Battle extends React.Component {
                             /> 
                     }
                     
-                </Row>
+                </PlayersDiv>
 
                 {playerOneDefined && playerTwoDefined && 
                     <ButtonLink
@@ -111,5 +104,3 @@ class Battle extends React.Component {
         );
     }
 }
-
-export default Battle;

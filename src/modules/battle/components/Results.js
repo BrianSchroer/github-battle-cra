@@ -12,18 +12,20 @@ const Row = glamorous.div({
     justifyContent: 'space-around'
 });
 
-class Results extends React.Component {
+export default class Results extends React.Component {
 
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    location: PropTypes.shape ({
+      search: PropTypes.string
+    })
+  };
 
-    this.state = {
-      winner: null,
-      loser: null,
-      error: null,
-      loading: true
-    };
-  }
+  state = {
+    winner: null,
+    loser: null,
+    error: null,
+    loading: true
+  };
 
   componentDidMount() {
     const players = queryString.parse(this.props.location.search);
@@ -87,11 +89,3 @@ class Results extends React.Component {
     );
   }
 }
-
-Results.propTypes = {
-  location: PropTypes.shape ({
-    search: PropTypes.string
-  })
-};
-
-export default Results;
