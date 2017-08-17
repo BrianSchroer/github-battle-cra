@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 import PlayerPreview from './PlayerPreview';
+import {NavLink} from 'react-router-dom';
 import {Number, Link} from '../../core';
 
 const PlayerProperties = glamorous.ul({
@@ -25,7 +26,16 @@ function Profile({info, stars}) {
         <li>Stars: <Number value={stars} /></li>
         <li>Followers: <Number value={info.followers}/></li>
         <li>Following: <Number value={info.following}/></li>
-        <li>Public Repos: <Number value={info.public_repos}/></li>
+        <li>
+          <NavLink                         
+            to={{
+              pathname: 'playerRepos',
+              search: `?playerName=${info.login}`
+            }}
+          > 
+            Public Repos: <Number value={info.public_repos}/>
+          </NavLink>
+        </li>
         {info.blog && <li><Link href={info.blog} /></li>}
       </PlayerProperties>
     </PlayerPreview>

@@ -40,7 +40,8 @@ function PlayerPreview({avatar, userName, url, children}) {
 PlayerPreview.propTypes = {
   avatar: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
-  url: PropTypes.string
+  url: PropTypes.string,
+  children: PropTypes.node
 };
 
 export default PlayerPreview;

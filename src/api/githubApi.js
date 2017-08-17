@@ -11,8 +11,8 @@ function getProfile(userName) {
   return axios.get(url).then(user => user.data);
 }
 
-function getRepos(userName) {
-  const url = `${urlPrefix}/users/${userName}/repos${appendParams('?per_page=100')}`;
+function getRepos(userName, count = 100) {
+  const url = `${urlPrefix}/users/${userName}/repos${appendParams(`?per_page=${count}`)}`;
   return axios.get(url);
 }
 
@@ -87,5 +87,9 @@ export default {
 
     return axios.get(encodedUri)
       .then(response => response.data.items);
-  }
+  },
+
+  getUserProfile: getProfile,
+  
+  getUserRepos: getRepos
 };
